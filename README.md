@@ -1,5 +1,5 @@
 ## Voxelization on point clouds using cython wrapped CUDA/C++
-This code provide an api to voxelize input point cloud and output the occupied information of each voxel.
+This code provides an API to voxelize input point clouds and outputs the occupied information of each voxel.
 
 #### Requirements
 * cython (>=0.16)
