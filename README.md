@@ -8,6 +8,7 @@ This code provides an API to voxelize input point clouds and outputs the occupie
 YOU need to first ensure you have added environment settings in your ~/.bashrc:
 
 `export PATH="/usr/local/cuda/bin:$PATH"`
+
 `export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"`
 
 #### Install:
