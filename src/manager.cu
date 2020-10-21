@@ -69,6 +69,7 @@ void GPUTransformer::retreive(float* point_transformed) {
   cudaMemcpy(x_h, x, d_size * sizeof(int), cudaMemcpyDeviceToHost);
   cudaMemcpy(y_h, y, d_size * sizeof(int), cudaMemcpyDeviceToHost);
   cudaMemcpy(height_h, height, d_size * sizeof(int), cudaMemcpyDeviceToHost);
+  auto t1 = std::chrono::high_resolution_clock::now();
 
   for (int i = 0; i < d_size; i++)
   {
@@ -92,6 +93,12 @@ void GPUTransformer::retreive(float* point_transformed) {
       k ++;
     }
   }
+
+  auto t2 = std::chrono::high_resolution_clock::now();
+  std::cout << "memcpy took "
+            << std::chrono::duration_cast<std::chrono::milliseconds>(t2-t1).count()
+            << " milliseconds\n";
+
   cudaFree(point_device);
   cudaFree(height);
   cudaFree(y);

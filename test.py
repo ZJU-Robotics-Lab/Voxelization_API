@@ -20,7 +20,7 @@ def load_pc_file(filename):
 
 #### Test
 test_data = load_pc_file("test.bin")
-print(test_data.shape)
+print("Input pc size:", test_data.shape)
 x = test_data[...,0]
 y = test_data[...,1]
 z = test_data[...,2]
@@ -63,5 +63,5 @@ plt.show()
 plt.pause(0.1)
 plt.close()
 
-print(point_t.shape)
+print("output pc size:", point_t.shape)
 
