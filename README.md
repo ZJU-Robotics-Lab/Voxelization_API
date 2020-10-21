@@ -22,3 +22,5 @@ or install
 to test:
 
 `$ python test.py`
+
+#### More sampling methods can be found in branches
