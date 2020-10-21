@@ -52,11 +52,11 @@ void __global__ point2gridmap(float* point, int* x_vec, int* y_vec, int* height,
     int idx_ring = floor((x + 1.0) / gap_x);
     int idx_sector = floor((y + 1.0) / gap_y);
     int idx_height = floor((z + 1.0) / gap_height);
-
+    
     height[gid] = idx_height;
     x_vec[gid] = idx_ring;
     y_vec[gid] = idx_sector;
-    
+
     __syncthreads();  
 }
 

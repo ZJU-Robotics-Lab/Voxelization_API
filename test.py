@@ -20,6 +20,7 @@ def load_pc_file(filename):
 
 #### Test
 test_data = load_pc_file("test.bin")
+print(test_data.shape)
 x = test_data[...,0]
 y = test_data[...,1]
 z = test_data[...,2]
@@ -32,11 +33,12 @@ plt.pause(0.1)
 plt.close()
 
 test_data = test_data.astype(np.float32)
-test_data = test_data[np.newaxis,:,...]
+# test_data = test_data[np.newaxis,:,...]
 
 #### Settings
 num_points = 4096
 size = num_points
+outsize = 2048
 num_y = 120
 num_x = 40
 num_height = 20
@@ -46,14 +48,21 @@ enough_large = 1 # Num points in a voxel, no use for occupied information
 #### Usage for voxelization
 test_data = test_data.transpose()
 test_data = test_data.flatten()
-adder = voxelocc.GPUTransformer(test_data, size, max_length, num_x, num_y, num_height, enough_large)
-adder.transform()
-point_t = adder.retreive()
+voxelizer = voxelocc.GPUTransformer(test_data, size, max_length, num_x, num_y, num_height, outsize)
+voxelizer.transform()
+point_t = voxelizer.retreive()
 point_t = point_t.reshape(-1,3)
-point_t = point_t.reshape(num_height, num_x, num_y, 3)
 
-#### Visualization
-for i in range(num_height):
-    plt.imshow(point_t[i,:,:,2])
-    plt.show()
-    plt.pause(0.3)
+#### Test fix-num sampling
+x = point_t[...,0]
+y = point_t[...,1]
+z = point_t[...,2]
+fig = plt.figure()
+ax = Axes3D(fig)
+ax.scatter(x, y, z)
+plt.show()
+plt.pause(0.1)
+plt.close()
+
+print(point_t.shape)
+
