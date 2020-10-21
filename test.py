@@ -43,7 +43,6 @@ num_y = 120
 num_x = 40
 num_height = 20
 max_length = 1  # max_length in xy direction (same for x and y)
-enough_large = 1 # Num points in a voxel, no use for occupied information
 
 #### Usage for voxelization
 test_data = test_data.transpose()
