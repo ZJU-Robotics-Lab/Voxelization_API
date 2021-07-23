@@ -24,22 +24,26 @@ to test:
 `$ python test.py`
 
 
-
 #### API Usage
 
 * **An example**:
 
 ```
-inputsize = 4096
+#### Settings
+num_points = 4096
+size = num_points
 outsize = 2048
 num_y = 120
-num_x = 120
+num_x = 40
 num_height = 20
-max_length = 1
-test_data = test_data.transpose()  #size=[num,3]
+max_height = 1  # max height
+max_length = 1  # max_length in xy direction (same for x and y)
+
+#### Usage for voxelization
+test_data = test_data.transpose()
 test_data = test_data.flatten()
-voxelizer = voxelocc.GPUTransformer(test_data, inputsize, max_length, num_x, num_y, num_height, outsize)
+voxelizer = voxelocc.GPUTransformer(test_data, size, max_length, max_height, num_x, num_y, num_height, outsize)
 voxelizer.transform()
 point_t = voxelizer.retreive()
-point_t = point_t.reshape(-1,3)  #size=[outsize,3]
+point_t = point_t.reshape(-1,3)
 ```
