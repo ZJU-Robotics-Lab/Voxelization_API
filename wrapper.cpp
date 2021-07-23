@@ -1750,6 +1750,7 @@ static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_ValueError[] = "ValueError";
+static const char __pyx_k_max_height[] = "max_height";
 static const char __pyx_k_max_length[] = "max_length";
 static const char __pyx_k_num_height[] = "num_height";
 static const char __pyx_k_ImportError[] = "ImportError";
@@ -1782,6 +1783,7 @@ static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_int32;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_max_height;
 static PyObject *__pyx_n_s_max_length;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_u_ndarray_is_not_C_contiguous;
@@ -1806,7 +1808,7 @@ static PyObject *__pyx_n_s_size;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
 static PyObject *__pyx_n_s_zeros;
-static int __pyx_pf_8voxelocc_14GPUTransformer___cinit__(struct __pyx_obj_8voxelocc_GPUTransformer *__pyx_v_self, PyArrayObject *__pyx_v_point, int __pyx_v_size, int __pyx_v_max_length, int __pyx_v_num_x, int __pyx_v_num_y, int __pyx_v_num_height, int __pyx_v_outsize); /* proto */
+static int __pyx_pf_8voxelocc_14GPUTransformer___cinit__(struct __pyx_obj_8voxelocc_GPUTransformer *__pyx_v_self, PyArrayObject *__pyx_v_point, int __pyx_v_size, int __pyx_v_max_length, int __pyx_v_max_height, int __pyx_v_num_x, int __pyx_v_num_y, int __pyx_v_num_height, int __pyx_v_outsize); /* proto */
 static PyObject *__pyx_pf_8voxelocc_14GPUTransformer_2transform(struct __pyx_obj_8voxelocc_GPUTransformer *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_8voxelocc_14GPUTransformer_4retreive(struct __pyx_obj_8voxelocc_GPUTransformer *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_8voxelocc_14GPUTransformer_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_8voxelocc_GPUTransformer *__pyx_v_self); /* proto */
@@ -1829,7 +1831,7 @@ static PyObject *__pyx_tuple__9;
  *     cdef int outsize
  * 
  *     def __cinit__(self, np.ndarray[float, ndim=1, mode = "c"] point not None,             # <<<<<<<<<<<<<<
- *                     int size, int max_length, int num_x, int num_y, int num_height, int outsize):
+ *                     int size, int max_length, int max_height, int num_x, int num_y, int num_height, int outsize):
  * 
  */
 
@@ -1839,6 +1841,7 @@ static int __pyx_pw_8voxelocc_14GPUTransformer_1__cinit__(PyObject *__pyx_v_self
   PyArrayObject *__pyx_v_point = 0;
   int __pyx_v_size;
   int __pyx_v_max_length;
+  int __pyx_v_max_height;
   int __pyx_v_num_x;
   int __pyx_v_num_y;
   int __pyx_v_num_height;
@@ -1850,12 +1853,14 @@ static int __pyx_pw_8voxelocc_14GPUTransformer_1__cinit__(PyObject *__pyx_v_self
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_point,&__pyx_n_s_size,&__pyx_n_s_max_length,&__pyx_n_s_num_x,&__pyx_n_s_num_y,&__pyx_n_s_num_height,&__pyx_n_s_outsize,0};
-    PyObject* values[7] = {0,0,0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_point,&__pyx_n_s_size,&__pyx_n_s_max_length,&__pyx_n_s_max_height,&__pyx_n_s_num_x,&__pyx_n_s_num_y,&__pyx_n_s_num_height,&__pyx_n_s_outsize,0};
+    PyObject* values[8] = {0,0,0,0,0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        CYTHON_FALLTHROUGH;
         case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
         CYTHON_FALLTHROUGH;
         case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
@@ -1882,43 +1887,49 @@ static int __pyx_pw_8voxelocc_14GPUTransformer_1__cinit__(PyObject *__pyx_v_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_size)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 7, 7, 1); __PYX_ERR(1, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 8, 8, 1); __PYX_ERR(1, 19, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_max_length)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 7, 7, 2); __PYX_ERR(1, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 8, 8, 2); __PYX_ERR(1, 19, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
-        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_x)) != 0)) kw_args--;
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_max_height)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 7, 7, 3); __PYX_ERR(1, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 8, 8, 3); __PYX_ERR(1, 19, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
-        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_y)) != 0)) kw_args--;
+        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_x)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 7, 7, 4); __PYX_ERR(1, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 8, 8, 4); __PYX_ERR(1, 19, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
-        if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_height)) != 0)) kw_args--;
+        if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_y)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 7, 7, 5); __PYX_ERR(1, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 8, 8, 5); __PYX_ERR(1, 19, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
-        if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_outsize)) != 0)) kw_args--;
+        if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_height)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 7, 7, 6); __PYX_ERR(1, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 8, 8, 6); __PYX_ERR(1, 19, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  7:
+        if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_outsize)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 8, 8, 7); __PYX_ERR(1, 19, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 19, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 7) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 8) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
@@ -1928,25 +1939,27 @@ static int __pyx_pw_8voxelocc_14GPUTransformer_1__cinit__(PyObject *__pyx_v_self
       values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
       values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
       values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+      values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
     }
     __pyx_v_point = ((PyArrayObject *)values[0]);
     __pyx_v_size = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
     __pyx_v_max_length = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_max_length == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
-    __pyx_v_num_x = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_num_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
-    __pyx_v_num_y = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_num_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
-    __pyx_v_num_height = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_num_height == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
-    __pyx_v_outsize = __Pyx_PyInt_As_int(values[6]); if (unlikely((__pyx_v_outsize == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
+    __pyx_v_max_height = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_max_height == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
+    __pyx_v_num_x = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_num_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
+    __pyx_v_num_y = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_num_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
+    __pyx_v_num_height = __Pyx_PyInt_As_int(values[6]); if (unlikely((__pyx_v_num_height == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
+    __pyx_v_outsize = __Pyx_PyInt_As_int(values[7]); if (unlikely((__pyx_v_outsize == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 19, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 19, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("voxelocc.GPUTransformer.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_point), __pyx_ptype_5numpy_ndarray, 0, "point", 0))) __PYX_ERR(1, 19, __pyx_L1_error)
-  __pyx_r = __pyx_pf_8voxelocc_14GPUTransformer___cinit__(((struct __pyx_obj_8voxelocc_GPUTransformer *)__pyx_v_self), __pyx_v_point, __pyx_v_size, __pyx_v_max_length, __pyx_v_num_x, __pyx_v_num_y, __pyx_v_num_height, __pyx_v_outsize);
+  __pyx_r = __pyx_pf_8voxelocc_14GPUTransformer___cinit__(((struct __pyx_obj_8voxelocc_GPUTransformer *)__pyx_v_self), __pyx_v_point, __pyx_v_size, __pyx_v_max_length, __pyx_v_max_height, __pyx_v_num_x, __pyx_v_num_y, __pyx_v_num_height, __pyx_v_outsize);
 
   /* function exit code */
   goto __pyx_L0;
@@ -1957,7 +1970,7 @@ static int __pyx_pw_8voxelocc_14GPUTransformer_1__cinit__(PyObject *__pyx_v_self
   return __pyx_r;
 }
 
-static int __pyx_pf_8voxelocc_14GPUTransformer___cinit__(struct __pyx_obj_8voxelocc_GPUTransformer *__pyx_v_self, PyArrayObject *__pyx_v_point, int __pyx_v_size, int __pyx_v_max_length, int __pyx_v_num_x, int __pyx_v_num_y, int __pyx_v_num_height, int __pyx_v_outsize) {
+static int __pyx_pf_8voxelocc_14GPUTransformer___cinit__(struct __pyx_obj_8voxelocc_GPUTransformer *__pyx_v_self, PyArrayObject *__pyx_v_point, int __pyx_v_size, int __pyx_v_max_length, int __pyx_v_max_height, int __pyx_v_num_x, int __pyx_v_num_y, int __pyx_v_num_height, int __pyx_v_outsize) {
   PyArrayObject *__pyx_v_y = 0;
   PyArrayObject *__pyx_v_x = 0;
   PyArrayObject *__pyx_v_height = 0;
@@ -2011,7 +2024,7 @@ static int __pyx_pf_8voxelocc_14GPUTransformer___cinit__(struct __pyx_obj_8voxel
   __pyx_pybuffernd_point.diminfo[0].strides = __pyx_pybuffernd_point.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_point.diminfo[0].shape = __pyx_pybuffernd_point.rcbuffer->pybuffer.shape[0];
 
   /* "wrapper.pyx":22
- *                     int size, int max_length, int num_x, int num_y, int num_height, int outsize):
+ *                     int size, int max_length, int max_height, int num_x, int num_y, int num_height, int outsize):
  * 
  *         self.size = size             # <<<<<<<<<<<<<<
  *         self.outsize = outsize
@@ -2136,7 +2149,7 @@ static int __pyx_pf_8voxelocc_14GPUTransformer___cinit__(struct __pyx_obj_8voxel
  *         cdef np.ndarray[int, ndim=1, mode = "c"] x = np.zeros(self.size, dtype=np.int32)
  *         cdef np.ndarray[int, ndim=1, mode = "c"] height = np.zeros(self.size, dtype=np.int32)             # <<<<<<<<<<<<<<
  * 
- *         self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, num_x, num_y, num_height, outsize)
+ *         self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, max_height, num_x, num_y, num_height, outsize)
  */
   __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -2181,7 +2194,7 @@ static int __pyx_pf_8voxelocc_14GPUTransformer___cinit__(struct __pyx_obj_8voxel
   /* "wrapper.pyx":29
  *         cdef np.ndarray[int, ndim=1, mode = "c"] height = np.zeros(self.size, dtype=np.int32)
  * 
- *         self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, num_x, num_y, num_height, outsize)             # <<<<<<<<<<<<<<
+ *         self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, max_height, num_x, num_y, num_height, outsize)             # <<<<<<<<<<<<<<
  * 
  *     def transform(self):
  */
@@ -2225,13 +2238,13 @@ static int __pyx_pf_8voxelocc_14GPUTransformer___cinit__(struct __pyx_obj_8voxel
     __Pyx_RaiseBufferIndexError(__pyx_t_10);
     __PYX_ERR(1, 29, __pyx_L1_error)
   }
-  __pyx_v_self->g = new GPUTransformer((&(*__Pyx_BufPtrCContig1d(float *, __pyx_pybuffernd_point.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_point.diminfo[0].strides))), __pyx_v_self->size, (&(*__Pyx_BufPtrCContig1d(int *, __pyx_pybuffernd_x.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_x.diminfo[0].strides))), (&(*__Pyx_BufPtrCContig1d(int *, __pyx_pybuffernd_y.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_y.diminfo[0].strides))), (&(*__Pyx_BufPtrCContig1d(int *, __pyx_pybuffernd_height.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_height.diminfo[0].strides))), __pyx_v_max_length, __pyx_v_num_x, __pyx_v_num_y, __pyx_v_num_height, __pyx_v_outsize);
+  __pyx_v_self->g = new GPUTransformer((&(*__Pyx_BufPtrCContig1d(float *, __pyx_pybuffernd_point.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_point.diminfo[0].strides))), __pyx_v_self->size, (&(*__Pyx_BufPtrCContig1d(int *, __pyx_pybuffernd_x.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_x.diminfo[0].strides))), (&(*__Pyx_BufPtrCContig1d(int *, __pyx_pybuffernd_y.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_y.diminfo[0].strides))), (&(*__Pyx_BufPtrCContig1d(int *, __pyx_pybuffernd_height.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_height.diminfo[0].strides))), __pyx_v_max_length, __pyx_v_max_height, __pyx_v_num_x, __pyx_v_num_y, __pyx_v_num_height, __pyx_v_outsize);
 
   /* "wrapper.pyx":19
  *     cdef int outsize
  * 
  *     def __cinit__(self, np.ndarray[float, ndim=1, mode = "c"] point not None,             # <<<<<<<<<<<<<<
- *                     int size, int max_length, int num_x, int num_y, int num_height, int outsize):
+ *                     int size, int max_length, int max_height, int num_x, int num_y, int num_height, int outsize):
  * 
  */
 
@@ -2270,7 +2283,7 @@ static int __pyx_pf_8voxelocc_14GPUTransformer___cinit__(struct __pyx_obj_8voxel
 }
 
 /* "wrapper.pyx":31
- *         self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, num_x, num_y, num_height, outsize)
+ *         self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, max_height, num_x, num_y, num_height, outsize)
  * 
  *     def transform(self):             # <<<<<<<<<<<<<<
  *         self.g.transform()
@@ -2305,7 +2318,7 @@ static PyObject *__pyx_pf_8voxelocc_14GPUTransformer_2transform(struct __pyx_obj
   __pyx_v_self->g->transform();
 
   /* "wrapper.pyx":31
- *         self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, num_x, num_y, num_height, outsize)
+ *         self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, max_height, num_x, num_y, num_height, outsize)
  * 
  *     def transform(self):             # <<<<<<<<<<<<<<
  *         self.g.transform()
@@ -5311,6 +5324,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_int32, __pyx_k_int32, sizeof(__pyx_k_int32), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_max_height, __pyx_k_max_height, sizeof(__pyx_k_max_height), 0, 0, 1, 1},
   {&__pyx_n_s_max_length, __pyx_k_max_length, sizeof(__pyx_k_max_length), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_u_ndarray_is_not_C_contiguous, __pyx_k_ndarray_is_not_C_contiguous, sizeof(__pyx_k_ndarray_is_not_C_contiguous), 0, 1, 0, 0},

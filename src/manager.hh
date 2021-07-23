@@ -1,6 +1,8 @@
 class GPUTransformer {
   float* point_device;
   float* point_host;
+
+  int h_max_height;
   int h_max_length;
   int h_num_x;
   int h_num_y;
@@ -10,6 +12,7 @@ class GPUTransformer {
   int d_num_x;
   int d_num_y;
   int outsize;
+  int density;
 
   int* h_x;
   int* h_y;
@@ -23,7 +26,7 @@ class GPUTransformer {
 
 public:
 
-  GPUTransformer(float* point_host_, int size_, int* x_, int* y_, int* height, int max_length_, int num_x_, int num_y_, int num_height_, int outsize_); // constructor (copies to GPU)
+  GPUTransformer(float* point_host_, int size_, int* x_, int* y_, int* height, int max_length_, int max_height_, int num_x_, int num_y_, int num_height_, int outsize_); // constructor (copies to GPU)
 
   ~GPUTransformer(); // destructor
 
