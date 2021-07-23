@@ -40,15 +40,16 @@ size = num_points
 num_y = 120
 num_x = 40
 num_height = 20
+max_height = 1  # max height
 max_length = 1  # max_length in xy direction (same for x and y)
-enough_large = 1 # Num points in a voxel, no use for occupied information
+num_in_voxel = 1 # Num points in a voxel, no use for occupied information
 
 #### Usage for voxelization
 test_data = test_data.transpose()
 test_data = test_data.flatten()
-adder = voxelocc.GPUTransformer(test_data, size, max_length, num_x, num_y, num_height, enough_large)
-adder.transform()
-point_t = adder.retreive()
+transer = voxelocc.GPUTransformer(test_data, size, max_length, max_height, num_x, num_y, num_height, num_in_voxel)
+transer.transform()
+point_t = transer.retreive()
 point_t = point_t.reshape(-1,3)
 point_t = point_t.reshape(num_height, num_x, num_y, 3)
 

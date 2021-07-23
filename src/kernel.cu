@@ -11,7 +11,7 @@
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 
-void __global__ point2gridmap(float* point, int* x_vec, int* y_vec, int* height, int d_size, int max_length, int num_x, int num_y, int num_height) 
+void __global__ point2gridmap(float* point, int* x_vec, int* y_vec, int* height, int d_size, int max_length, int max_height, int num_x, int num_y, int num_height) 
 {
     int gid = threadIdx.x + blockDim.x*blockIdx.x;
     
@@ -21,7 +21,7 @@ void __global__ point2gridmap(float* point, int* x_vec, int* y_vec, int* height,
 
     gap_x = 2.0 * (float)max_length / (float)num_x;
     gap_y = 2.0 * (float)max_length/(float)num_y;
-    gap_height = 2.0 / (float)num_height;
+    gap_height = 2.0 * (float)max_height/ (float)num_height;
 
     float x, y, z;
     x = point[gid];

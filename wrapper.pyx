@@ -6,7 +6,7 @@ assert sizeof(int) == sizeof(np.int32_t)
 
 cdef extern from "src/manager.hh":
     cdef cppclass C_GPUTransformer "GPUTransformer":
-        C_GPUTransformer(float *point, int size, int *x, int *y, int *height, int max_length, int num_x, int num_y, int num_height, int enough_large)
+        C_GPUTransformer(float *point, int size, int *x, int *y, int *height, int max_length, int max_height, int num_x, int num_y, int num_height, int enough_large)
         void transform()
         void retreive(float *point_trans)
 
@@ -16,7 +16,7 @@ cdef class GPUTransformer:
     cdef int grid_size
     
     def __cinit__(self, np.ndarray[float, ndim=1, mode = "c"] point not None,
-                    int size, int max_length, int num_x, int num_y, int num_height, int enough_large):
+                    int size, int max_length, int max_height, int num_x, int num_y, int num_height, int enough_large):
 
         self.size = size
         self.grid_size = num_x * num_y * num_height * enough_large
@@ -24,7 +24,7 @@ cdef class GPUTransformer:
         cdef np.ndarray[int, ndim=1, mode = "c"] x = np.zeros(self.size, dtype=np.int32)
         cdef np.ndarray[int, ndim=1, mode = "c"] height = np.zeros(self.size, dtype=np.int32)
 
-        self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, num_x, num_y, num_height, enough_large)
+        self.g = new C_GPUTransformer(&point[0], self.size, &x[0], &y[0], &height[0], max_length, max_height, num_x, num_y, num_height, enough_large)
 
     def transform(self):
         self.g.transform()
