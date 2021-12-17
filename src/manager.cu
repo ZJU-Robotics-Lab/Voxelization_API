@@ -62,7 +62,7 @@ void GPUTransformer::retreive(float* point_transformed) {
   {
     point_transformed[3*(y_h[i] + x_h[i] * h_num_y + height_h[i] * h_num_y * h_num_x) + 0] = point_host[i];
     point_transformed[3*(y_h[i] + x_h[i] * h_num_y + height_h[i] * h_num_y * h_num_x) + 1] = point_host[i + d_size];
-    point_transformed[3*(y_h[i] + x_h[i] * h_num_y + height_h[i] * h_num_y * h_num_x) + 2] = point_host[i + 2 * d_size];
+    point_transformed[3*(y_h[i] + x_h[i] * h_num_y + height_h[i] * h_num_y * h_num_x) + 2] = 1; // 1 for occupied
   }
 
   cudaFree(point_device);
